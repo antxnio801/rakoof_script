@@ -327,21 +327,6 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	end
 end)
 
-Humanoid.Died:Connect(function()
-	if Options.main_autofarm_toggle.Value == false then return end
-	
-	task.wait(game:GetService("Players").RespawnTime + .3)
-
-	if rake_autofarm_connection then
-
-		pcall(function() coroutine.close(rake_autofarm_connection) end)
-		rake_autofarm_connection = nil
-	end
-
-	getgenv().rake_autofarm_connection = autofarm_function
-	rake_autofarm_connection()
-end)
-
 ESP:AddObjectListener(workspace, {
 
 	Name = "RakoofNPC",
